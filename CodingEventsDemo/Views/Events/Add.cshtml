@@ -4,14 +4,16 @@
     <div class="form-group">
         <label for="name">
             Name:
-            <input name="name" type="text" />
+            <input type="text" name="name" class="form-control" />
         </label>
     </div>
     <div class="form-group">
         <label for="description">
-            Description
-            <input name="description" />            :
+            Description:
+            <input type="text" name="description" class="form-control" />            
         </label>
     </div>
     <input type="submit" value="Add Event" />
 </form>
+
+@*for model binding the names have to match exactly between here and the properties in the Event.cs. - "name" and "description" here.*@

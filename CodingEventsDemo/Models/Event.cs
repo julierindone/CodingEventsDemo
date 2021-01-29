@@ -13,7 +13,13 @@ namespace CodingEventsDemo.Models
         public int Id { get; }
         private static int nextId = 1;    //private; lowercase bc it's a field - won't be used as a property. static bc it's not dependent on any instance data
 
-        public Event(string name, string description)
+        public Event()
+        {
+            Id = nextId;
+            nextId++;
+        }
+
+        public Event(string name, string description): this()
         {
             this.Name = name;
             this.Description = description;

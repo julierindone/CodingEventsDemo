@@ -28,9 +28,10 @@ namespace coding_events_practice.Controllers
 
         [HttpPost]
         [Route("Events/Add")]
-        public IActionResult NewEvent(string name, string description)
+        //revised NewEvent method to create a Model of the Event class called newEvent instead of passing in the parameters string name & string descrption. We had to go check the form to make sure model field names(properties in Data/Event.cs) match the form field names. (see notes in Add.cshtml)
+        public IActionResult NewEvent(Event newEvent)    //parameter is now newEvent 
         {
-            EventData.Add(new Event(name, description));     //adding in a new Event object to use in the method        
+            EventData.Add(newEvent);     
 
             return Redirect("/Events");
         }
