@@ -1,32 +1,20 @@
 ﻿
 <h1>Coding Events</h1>
 
-<p>
-    <a asp-controller="Events" asp-action="Add">Add Event</a>
-</p>
-
-@if (ViewBag.events.Count == 0)
-{
-    <p>No events yet!</p>
-}
-else
-{
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
+            <th>Name</th>
+            <th>Description</th>
         </tr>
-        @foreach (var evt in ViewBag.events)
-        {
-            <tr>
-                <td>@evt.Key</td>
-                <td>@evt.Value</td>
+
+        @foreach (var meeting in ViewBag.events)           @*Use var as catchall data type.*@
+        {<tr>
+                <td>@meeting.Name</td>
+                <td>@meeting.Description</td>
             </tr>
         }
+
     </table>
-}
+
+
 
