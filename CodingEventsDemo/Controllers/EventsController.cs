@@ -68,7 +68,8 @@ namespace coding_events_practice.Controllers
         public IActionResult SubmitEditEventForm(int eventID, string name, string description)
         {
             //this needs to present the edited data.           
-            return Redirect("/Events/");
+            //return Redirect("/Events/");
+            return null;
         }
     }
 }
