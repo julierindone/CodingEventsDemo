@@ -24,9 +24,9 @@ namespace CodingEventsDemo.Data
         }
 
         //retrieve a single event
-        public static Event GetByID(int id)
+        public static Event GetById(int id)      //It's going to return the Event object that matches the ID being asked for
         {
-            return Events[id];
+            return Events[id];    //using the key itself to return that value ---why are we using lowercase? why is it letting us? How is it knowing what to retrieve? if both key and value were integers how would it know?
         }
        
         //remove an event
