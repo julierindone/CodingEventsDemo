@@ -22,7 +22,7 @@ namespace coding_events_practice.Controllers
             return View();
         }
 
-        public IActionResult Add()
+        public IActionResult Add()     //this tells the program "go to the add page - /events/add/"
         {
             return View();
         }
@@ -31,7 +31,7 @@ namespace coding_events_practice.Controllers
         [Route("Events/Add")]
         public IActionResult NewEvent(string name, string desc)  //this handle matches the label in the Event.cs file.
         {
-            Events.Add(new Event(name, desc));
+            Events.Add(new Event(name, desc));    //this is where the event is actually created!
             
 
             return Redirect("/Events");
