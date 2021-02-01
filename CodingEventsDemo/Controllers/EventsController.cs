@@ -57,17 +57,18 @@ namespace coding_events_practice.Controllers
             /////////////my items aren't actually deleting from the last!
         }
 
-        public IActionResult Edit(int[] eventIds)
+        public IActionResult Edit(int id)
         {
             ViewBag.events = EventData.GetById(id);
-
+            return View();
         }
 
         [HttpPost]
         [Route("/EventsController/Edit/*/")]
         public IActionResult SubmitEditEventForm(int eventID, string name, string description)
         {
-
+            //this needs to present the edited data.           
+            return Redirect("/Events/");
         }
     }
 }

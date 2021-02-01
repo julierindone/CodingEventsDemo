@@ -18,7 +18,7 @@ namespace CodingEventsDemo.Data
         }
 
         //retrieve events  <-- this allows us to access ALL the events outside of this class
-        public static IEnumerable<Event> GetAll()         // <-- review interfaces!! 
+        public static IEnumerable<Event> GetAll()         //GetAll() is a method that was created by launchcode.
         {
             return Events.Values;          // <-- we JUST want the values.
         }
@@ -26,7 +26,7 @@ namespace CodingEventsDemo.Data
         //retrieve a single event
         public static Event GetById(int id)      //It's going to return the Event object that matches the ID being asked for
         {
-            return Events[id];    //using the key itself to return that value ---why are we using lowercase? why is it letting us? How is it knowing what to retrieve? if both key and value were integers how would it know?
+            return Events[id];    //using the key itself to return that value
         }
        
         //remove an event
