@@ -29,9 +29,9 @@ namespace coding_events_practice.Controllers
 
         [HttpPost]
         [Route("Events/Add")]
-        public IActionResult NewEvent(string name)
+        public IActionResult NewEvent(string name, string desc)  //this handle matches the label in the Event.cs file.
         {
-            Events.Add(new Event(name));
+            Events.Add(new Event(name, desc));
             
 
             return Redirect("/Events");
