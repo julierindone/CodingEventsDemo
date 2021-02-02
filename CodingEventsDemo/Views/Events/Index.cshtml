@@ -1,4 +1,11 @@
-﻿<h1>Coding Events</h1>
+﻿using CodingEventsDemo.Models                   @*this is the same as the namespace for the class.*@
+@model List<Event>
+    @*these lines sets view to expect a certain type of object to be passed in. We passed in a list of Event objects here.*@
+
+@* Model: reference to object passed in 
+    Model with a capital M will replace viewbags*@
+
+<h1>Coding Events</h1>
 
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
@@ -9,7 +16,7 @@
     <a asp-controller="Events" asp-action="Delete">Delete Event</a>
 </p>
 
-@if (ViewBag.events.Count == 0)
+@if (Model.Count == 0)
 {
     <p>No events yet!</p>
 }
@@ -27,7 +34,7 @@ else
                 Description
             </th>
         </tr>
-        @foreach (var evt in ViewBag.events)
+        @foreach (var evt in Model)
         {
             <tr>
                 <td>@evt.Id</td>
