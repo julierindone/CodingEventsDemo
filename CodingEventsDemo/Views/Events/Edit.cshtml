@@ -1,0 +1,32 @@
+﻿@using CodingEventsDemo.ViewModels
+
+@model EditEventViewModel
+@{
+}
+
+@*Model: variable poting to the instance of EditEventViewModel that was passed to it*@
+<h1>Edit Event: @Model.Name</h1>        @* <-- this will insert the name.*@
+
+<form method="post" asp-controller="Events" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />    @* <-- adding a hidden input or else the model binding won't work. This way it's still sent in as a post-request parameter.*@
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactEmail">Contact Email</label>  @*Unsure why we did it here but not the others*@
+        <input asp-for="ContactEmail" class="form-control" />
+        <span asp-validation-for="ContactEmail"></span>
+    </div>
+
+    <input type="submit" value="Edit Event" />
+
+</form>
