@@ -7,7 +7,7 @@ using CodingEventsDemo.Models;
 using CodingEventsDemo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+// Learning different ways to enforce validation using attributes
 
 namespace coding_events_practice.Controllers
 {
@@ -25,22 +25,38 @@ namespace coding_events_practice.Controllers
         public IActionResult Add()
         {
             AddEventViewModel addEventViewModel = new AddEventViewModel();
-
             return View(addEventViewModel);
         }
 
         [HttpPost]
         public IActionResult Add(AddEventViewModel addEventViewModel)
+            //we'll use ModelState to see if the modelstate of addEventViewModel is valid with an if statement.
         {
-            Event newEvent = new Event
+            if (ModelState.IsValid)
+                //View model is valid:
             {
-                Name = addEventViewModel.Name,
-                Description = addEventViewModel.Description
-            };
+                Event newEvent = new Event
+                {
+                    Name = addEventViewModel.Name,
+                    Description = addEventViewModel.Description,
+                    ContactEmail = addEventViewModel.ContactEmail    //Add email over here. Still not server-side validating.
+                };
 
-            EventData.Add(newEvent);
+                EventData.Add(newEvent);
+
+                return Redirect("/Events");
+            }      //we don't need to use an else case bc the code in the id statement includes a return statement.
+
+            //new model is NOT valid! returning so they fill out the form again:
+
+            return View(addEventViewModel);
+
+
+
+
+            
       
-            return Redirect("/Events");
+            
         }
 
         public IActionResult Delete()

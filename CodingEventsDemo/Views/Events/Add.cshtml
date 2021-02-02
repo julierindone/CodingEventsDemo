@@ -7,10 +7,19 @@
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
     </div>
     <div class="form-group">
         <label asp-for="Description"></label>
         <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ContactEmail"></label>  @*Ben does this differently than the book.*@
+        <input asp-for="ContactEmail" class="form-control" />  @*The classes are coming from Bootstrap.*@
+        <span asp-validation-for="ContactEmail"></span>
     </div>
     <input type="submit" value="Add Event" />
 </form>
+
+@*We added a style (red) to validation error in css file*@

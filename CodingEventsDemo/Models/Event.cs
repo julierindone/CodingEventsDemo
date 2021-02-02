@@ -6,16 +6,19 @@ namespace CodingEventsDemo.Models
     public class Event
     {
         public string Name { get; set; }
-
         public string Description { get; set; }
+        public string ContactEmail { get; set; }  /// <summary>
+        /// /adding in ContactEmail so we can see our email validation in the AddEventViewModel!
+        /// </summary>
 
         public int Id { get; }
         static private int nextId = 1;
 
-        public Event(string name, string description)
+        public Event(string name, string description, string contactEmail) : this()
         {
             Name = name;
             Description = description;
+            ContactEmail = contactEmail;
             Id = nextId;
             nextId++;
         }
