@@ -14,7 +14,7 @@ namespace coding_events_practice.Controllers
     public class EventsController : Controller
     {
 
-        private EventDbContext context;
+        private readonly EventDbContext context;
 
         public EventsController(EventDbContext dbContext)
         {
