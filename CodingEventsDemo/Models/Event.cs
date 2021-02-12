@@ -5,15 +5,17 @@ namespace CodingEventsDemo.Models
 {
     public class Event
     {
+       public int Id { get; set; }
+        
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public string ContactEmail { get; set; }
 
-        public EventType Type { get; set; }
+        public EventCategory Category { get; set; }
 
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
 
         public Event()
         {
@@ -36,12 +38,12 @@ namespace CodingEventsDemo.Models
         public override bool Equals(object obj)
         {
             return obj is Event @event &&
-                   Id == @event.Id;
+                   CategoryId == @event.CategoryId;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id);
+            return HashCode.Combine(CategoryId);
         }
     }
 }

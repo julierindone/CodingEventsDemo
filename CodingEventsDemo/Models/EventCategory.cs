@@ -12,6 +12,8 @@ namespace CodingEventsDemo.Models
 
         public string Name { get; set; }
 
+        public List<Event> Events { get; set; }
+
         public EventCategory()
         {
         }
@@ -30,7 +32,7 @@ namespace CodingEventsDemo.Models
         public override bool Equals(object obj)
         {
             return obj is Event @event &&
-                   Id == @event.Id;
+                   Id == @event.CategoryId;
         }
 
         public override int GetHashCode()

@@ -52,8 +52,7 @@ namespace CodingEventsDemo.Controllers
                 return Redirect("/EventCategory");
             }
 
-            return View(addEventCategories);            //this might be wrong.... maybe EventCategoryView?
-
+            return View(addEventCategories);            
         }
     }
 }
