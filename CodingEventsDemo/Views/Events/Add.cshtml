@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <label asp-for="CategoryId">Category</label>
-        <select asp-for="CategoryId" asp-items="Model.EventCategories"></select>  
+        <select asp-for="CategoryId" asp-items="@Model.EventCategories"></select>  
                 @*asp-items is the list of items in drop down*@
     </div>
     <input type="submit" value="Add Event" />

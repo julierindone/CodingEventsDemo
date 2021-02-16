@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodingEventsDemo.Models
 {
     public class Event
-    {
-       public int Id { get; set; }
-        
+    {        
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -16,6 +14,9 @@ namespace CodingEventsDemo.Models
         public EventCategory Category { get; set; }
 
         public int CategoryId { get; set; }
+
+        public int Id { get; set; }
+        public string CategoryName { get; internal set; }
 
         public Event()
         {
@@ -38,12 +39,12 @@ namespace CodingEventsDemo.Models
         public override bool Equals(object obj)
         {
             return obj is Event @event &&
-                   CategoryId == @event.CategoryId;
+                   Id == @event.Id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(CategoryId);
+            return HashCode.Combine(Id);
         }
     }
 }

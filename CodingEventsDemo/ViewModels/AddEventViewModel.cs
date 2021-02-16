@@ -19,7 +19,7 @@ namespace CodingEventsDemo.ViewModels
         [EmailAddress]
         public string ContactEmail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
 
         public List<SelectListItem> EventCategories { get; set; }
@@ -34,11 +34,12 @@ namespace CodingEventsDemo.ViewModels
 
             foreach (var category in categories)
             {
-                EventCategories.Add(new SelectListItem
+                EventCategories.Add(
+                    new SelectListItem
                 {
-                    Value = category.Id.ToString(),    
+                    Value = category.Id.ToString(),    //we want the user to see the category name, but have it use the ID.
                     Text = category.Name
-                });
+                }); ;                          //does this second semicolin do something?
             }
         }
     }

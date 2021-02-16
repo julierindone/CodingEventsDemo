@@ -6,16 +6,16 @@ using CodingEventsDemo.Data;
 using CodingEventsDemo.Models;
 using CodingEventsDemo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Framework;
+using Microsoft.EntityFrameworkCore;  //changed building to this one.
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace coding_events_practice.Controllers
 {
     public class EventsController : Controller
     {
 
-        private readonly EventDbContext context;
+        //private readonly EventDbContext context;
+        private EventDbContext context;
 
         public EventsController(EventDbContext dbContext)
         {
@@ -25,14 +25,15 @@ namespace coding_events_practice.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Event> events = context.Events.ToList();
+            List<Event> events = context.Events
+                .Include(e => e.Category).ToList();
 
             return View(events);
         }
 
         public IActionResult Add()
         {
-            AddEventViewModel addEventViewModel = new AddEventViewModel();
+            AddEventViewModel addEventViewModel = new AddEventViewModel(context.EventCategories.ToList());
 
             return View(addEventViewModel);
         }
@@ -80,5 +81,21 @@ namespace coding_events_practice.Controllers
 
             return Redirect("/Events");
         }
+
+        public IActionResult Detail(int id) //I think Ben called this "Details."  
+                //they pass in id for the event via a query parameter, or as a route parameter.
+                    //Events/Detail?id=5 ---OR--- Events/Detail/5
+        {
+            Event theEvent = context.Events    //this came from the EventDetailViewModel.
+                .Include(e => e.Category)      //these create eager loading.
+                .Single(e => e.Id == id);      //this ensures all entries with that id is printed? this would be more important if we were trying to match all entries that start with letter b. no idea how this works... that was Ben's expl.
+
+            EventDetailViewModel viewModel = new EventDetailViewModel(theEvent);
+            return View(viewModel);
+
+
+        }
+
+
     }
 }
