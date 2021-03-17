@@ -88,9 +88,14 @@ namespace coding_events_practice.Controllers
         {
             Event theEvent = context.Events    //this came from the EventDetailViewModel.
                 .Include(e => e.Category)      //these create eager loading.
-                .Single(e => e.Id == id);      //this ensures all entries with that id is printed? this would be more important if we were trying to match all entries that start with letter b. no idea how this works... that was Ben's expl.
+                .Single(e => e.Id == id);      //this ensures all entries with that id is printed? this would be more important if we were trying to match all entries that start with letter b.
 
-            EventDetailViewModel viewModel = new EventDetailViewModel(theEvent);
+            List<EventTag> eventTags = context.EventTags
+                .Where(et => et.EventId == id)  //we only want to filter out tags with this event id .
+                .Include(et => et.Tag)       //since EventTag has properties that are refs from other tables, we must eagerly load them to be included.
+                .ToList();              //Then we put in a list.
+                                                     
+            EventDetailViewModel viewModel = new EventDetailViewModel(theEvent, eventTags);
             return View(viewModel);
 
 

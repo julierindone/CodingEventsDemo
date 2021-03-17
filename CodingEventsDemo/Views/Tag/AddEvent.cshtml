@@ -1,0 +1,19 @@
+﻿@model CodingEventsDemo.ViewModels.AddEventTagViewModel
+
+<h1>Add Tag to @Model.Event.Name</h1>                          
+
+<form asp-controller="Tag" asp-action="AddEvent" method="post">
+
+    <input type="hidden" value="@Model.Event.Id" name="EventId" />
+    @*"This keeps track of which specific EventId we want. hidden" = the user doesn't see or interact with this. *@
+
+    <div class="form-group">
+        <label asp-for="TagId">Tag</label>
+        <select asp-for="TagId" asp-items="Model.Tags"></select>
+
+        <span asp-validation-for="TagId"></span>
+    </div>
+
+    <input type="submit" value="Add Tag" />
+
+</form>

@@ -39,7 +39,7 @@ namespace CodingEventsDemo.ViewModels
                 {
                     Value = category.Id.ToString(),    //we want the user to see the category name, but have it use the ID.
                     Text = category.Name
-                }); ;                          //does this second semicolin do something?
+                });                       
             }
         }
     }
