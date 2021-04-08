@@ -25,7 +25,6 @@ namespace CodingEventsDemo.Data
             base.OnModelCreating(modelBuilder);
         }
 
-
         public EventDbContext(DbContextOptions<EventDbContext> options) : base(options)
         {
         }
